@@ -274,8 +274,7 @@ public class FlowableAllTest extends RxJavaTest {
         Flowable<Boolean> allOdd = f.all(new Predicate<Integer>() {
             @Override
             public boolean test(Integer i) {
-            	// FIXME: Check for oddness that won't work for negative numbers.
-                return i % 2 == 1;
+            	return i % 2 != 0;
             }
         })
         .toFlowable()
