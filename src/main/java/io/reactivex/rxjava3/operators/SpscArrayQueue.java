@@ -96,12 +96,10 @@ public final class SpscArrayQueue<E> extends AtomicReferenceArray<E> implements 
         final int offset = calcElementOffset(index);
         // local load of field to avoid repeated loads after volatile reads
         final E e = lvElement(offset); // LoadLoad
-        if (null == e) {
-        	// FIXME: A method should have only one exit point.
-            return null;
+        if (null != e) {
+	        soConsumerIndex(index + 1); // ordered store -> atomic and ordered for size()
+	        soElement(offset, null); // StoreStore
         }
-        soConsumerIndex(index + 1); // ordered store -> atomic and ordered for size()
-        soElement(offset, null); // StoreStore
         return e;
     }
 
