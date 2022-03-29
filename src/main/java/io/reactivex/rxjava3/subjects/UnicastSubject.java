@@ -405,6 +405,7 @@ public final class UnicastSubject<T> extends Subject<T> {
                 downstream.lazySet(null);
                 return;
             }
+            // FIXME: Avoid variable names with short names like 'd'.
             boolean d = done;
 
             if (failFast && d) {
