@@ -62,9 +62,6 @@ public class OperatorsAreFinal {
         }
 
         if (e.length() != 0) {
-        	// FIXME: System.out.println is used.
-            System.out.println(e);
-
             throw new AssertionError(e.toString());
         }
     }
