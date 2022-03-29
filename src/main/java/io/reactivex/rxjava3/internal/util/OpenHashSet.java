@@ -112,6 +112,7 @@ public final class OpenHashSet<T> {
         T curr;
         for (;;) {
             last = pos;
+            // FIXME: Avoid reassigning parameters.
             pos = (pos + 1) & m;
             for (;;) {
                 curr = a[pos];
