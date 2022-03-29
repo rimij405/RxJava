@@ -543,7 +543,8 @@ public class FlowableSwitchTest extends RxJavaTest {
 
         ts.assertTerminated();
         ts.assertNoErrors();
-
+        
+        // FIXME: Unnecessary fully qualified name.
         Assert.assertEquals(250, ts.values().size());
     }
 
