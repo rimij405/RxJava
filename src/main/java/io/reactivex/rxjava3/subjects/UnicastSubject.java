@@ -407,11 +407,8 @@ public final class UnicastSubject<T> extends Subject<T> {
             }
             boolean isDone = done;
 
-            if (failFast && isDone) {
-            	// FIXME: Collapsible if statements.
-                if (failedFast(q, a)) {
-                    return;
-                }
+            if (failFast && isDone && failedFast(q, a)) {
+                return;
             }
 
             a.onNext(null);
