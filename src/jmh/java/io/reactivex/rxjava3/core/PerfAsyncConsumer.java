@@ -70,15 +70,14 @@ SingleObserver<Object>, CompletableObserver, MaybeObserver<Object> {
      * @param count if less than 1001, a spin-wait is used
      * @return this
      */
-    public PerfAsyncConsumer await(int count) {
+    public PerfAsyncConsumer await(int count) throws InterruptedException {
         if (count <= 1000) {
             while (getCount() != 0) { }
         } else {
             try {
                 await();
             } catch (InterruptedException ex) {
-            	// FIXME: Avoid throwing raw exception types.
-                throw new RuntimeException(ex);
+            	throw ex;
             }
         }
         return this;
