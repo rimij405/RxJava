@@ -405,10 +405,9 @@ public final class UnicastSubject<T> extends Subject<T> {
                 downstream.lazySet(null);
                 return;
             }
-            // FIXME: Avoid variable names with short names like 'd'.
-            boolean d = done;
+            boolean isDone = done;
 
-            if (failFast && d) {
+            if (failFast && isDone) {
             	// FIXME: Collapsible if statements.
                 if (failedFast(q, a)) {
                     return;
@@ -417,7 +416,7 @@ public final class UnicastSubject<T> extends Subject<T> {
 
             a.onNext(null);
 
-            if (d) {
+            if (isDone) {
                 errorOrComplete(a);
                 return;
             }
