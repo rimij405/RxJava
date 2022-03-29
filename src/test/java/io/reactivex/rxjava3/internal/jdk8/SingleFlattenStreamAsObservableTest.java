@@ -301,8 +301,8 @@ public class SingleFlattenStreamAsObservableTest extends RxJavaTest {
 
             @Override
             public boolean hasNext() {
-            	// FIXME: Avoid assignment in operand.
-                if (count++ > 0) {
+            	count++;
+                if (count > 0) {
                     throw new TestException();
                 }
                 return true;
