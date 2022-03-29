@@ -107,26 +107,26 @@ public final class OpenHashSet<T> {
     boolean removeEntry(int pos, T[] a, int m) {
         size--;
 
+        int _pos = pos;
         int last;
         int slot;
         T curr;
         for (;;) {
-            last = pos;
-            // FIXME: Avoid reassigning parameters.
-            pos = (pos + 1) & m;
+            last = _pos;
+            _pos = (_pos + 1) & m;
             for (;;) {
-                curr = a[pos];
+                curr = a[_pos];
                 if (curr == null) {
                     a[last] = null;
                     return true;
                 }
                 slot = mix(curr.hashCode()) & m;
 
-                if (last <= pos ? last >= slot || slot > pos : last >= slot && slot > pos) {
+                if (last <= _pos ? last >= slot || slot > _pos : last >= slot && slot > _pos) {
                     break;
                 }
 
-                pos = (pos + 1) & m;
+                _pos = (_pos + 1) & m;
             }
             a[last] = curr;
         }
