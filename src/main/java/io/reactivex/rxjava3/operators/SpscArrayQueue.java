@@ -97,6 +97,7 @@ public final class SpscArrayQueue<E> extends AtomicReferenceArray<E> implements 
         // local load of field to avoid repeated loads after volatile reads
         final E e = lvElement(offset); // LoadLoad
         if (null == e) {
+        	// FIXME: A method should have only one exit point.
             return null;
         }
         soConsumerIndex(index + 1); // ordered store -> atomic and ordered for size()
