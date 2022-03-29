@@ -77,6 +77,7 @@ SingleObserver<Object>, CompletableObserver, MaybeObserver<Object> {
             try {
                 await();
             } catch (InterruptedException ex) {
+            	// FIXME: Avoid throwing raw exception types.
                 throw new RuntimeException(ex);
             }
         }
