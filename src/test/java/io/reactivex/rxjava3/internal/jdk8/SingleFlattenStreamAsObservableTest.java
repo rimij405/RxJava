@@ -323,6 +323,7 @@ public class SingleFlattenStreamAsObservableTest extends RxJavaTest {
     @Test
     public void nextThrowsInDrain() {
         @SuppressWarnings("unchecked")
+        // FIXME: Local variable could be final.
         Stream<Integer> stream = mock(Stream.class);
         when(stream.iterator()).thenReturn(new Iterator<Integer>() {
 
